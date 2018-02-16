@@ -21,23 +21,44 @@ public class BaseToDecimal extends AppCompatActivity
         this.answerTV = (TextView)this.findViewById(R.id.answerTV);
     }
 
+    private int baseToDecimal(String num, int base)
+    {
+        int sum = 0;
+        int place = 1;
+        String map = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        num = num.toUpperCase();
+
+        for(int i = num.length()-1; i >= 0; i--)
+        {
+            sum = sum + (map.indexOf(num.charAt(i)) * place);
+            place *= base;
+        }
+        return sum;
+    }
+
     public void base2ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 2");
+        String input = this.inputET.getText().toString();
+        int answer = this.baseToDecimal(input, 2);
+        this.answerTV.setText("" + answer);
     }
 
     public void base8ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 8");
-    }
+        String input = this.inputET.getText().toString();
+        int answer = this.baseToDecimal(input, 8);
+        this.answerTV.setText("" + answer);    }
 
     public void base10ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 10");
-    }
+        String input = this.inputET.getText().toString();
+        int answer = this.baseToDecimal(input, 10);
+        this.answerTV.setText("" + answer);    }
 
     public void base16ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 16");
+        String input = this.inputET.getText().toString();
+        int answer = this.baseToDecimal(input, 16);
+        this.answerTV.setText("" + answer);
     }
 }

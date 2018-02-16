@@ -22,23 +22,41 @@ public class DecimalToBase extends AppCompatActivity
         this.answerTV = (TextView)this.findViewById(R.id.answerTV);
     }
 
+    private String decimalToBase(int num, int base)
+    {
+        String answer = "";
+        String map = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        while(num > 0)
+        {
+            answer = map.charAt(num%base) + answer;
+            num = num / base;
+        }
+        return answer;
+    }
+
     public void base2ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 2");
+        int num = Integer.parseInt(this.inputET.getText().toString());
+        String answer = this.decimalToBase(num, 2);
+        this.answerTV.setText(answer);
     }
 
     public void base8ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 8");
-    }
+        int num = Integer.parseInt(this.inputET.getText().toString());
+        String answer = this.decimalToBase(num, 8);
+        this.answerTV.setText(answer);    }
 
     public void base10ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 10");
-    }
+        int num = Integer.parseInt(this.inputET.getText().toString());
+        String answer = this.decimalToBase(num, 10);
+        this.answerTV.setText(answer);    }
 
     public void base16ButtonPressed(View v)
     {
-        this.answerTV.setText("Base 16");
+        int num = Integer.parseInt(this.inputET.getText().toString());
+        String answer = this.decimalToBase(num, 16);
+        this.answerTV.setText(answer);
     }
 }
